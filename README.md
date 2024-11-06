@@ -2,10 +2,7 @@
 
 ## Prérequis
 
-Avant de démarrer, assurez-vous d'avoir les éléments suivants :
-
-- **Node.js** installé sur votre machine.
-- Un **compte MongoDB** et une **base de données** configurée.
+Avant de démarrer, assurez-vous de suivre les instructions suivantes  :
 
 ## Installation
 
