@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';  
 
 const CreerArticle = () => {
   const [article, setArticle] = useState({
+    id: '', 
     name: '',
     category: '',
     brand: '',
@@ -21,13 +23,12 @@ const CreerArticle = () => {
 
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
-    if (type === 'checkbox') {//si article est une checkbox
-
+    if (type === 'checkbox') {
       setArticle((prevArticle) => ({
         ...prevArticle,
         [name]: checked
       }));
-    } else if (name.startsWith('img')) {//si article est une image
+    } else if (name.startsWith('img')) { 
       setArticle((prevArticle) => ({
         ...prevArticle,
         picture: {
@@ -36,33 +37,51 @@ const CreerArticle = () => {
         }
       }));
     } else {
-      setArticle((prevArticle) => ({//pour les autres
+      setArticle((prevArticle) => ({ //pour les autres
         ...prevArticle,
         [name]: value
       }));
     }
   };
-
-  const handleSubmit = async (event) => {//quand on envoie
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const articleToSubmit = {//on met l'article à envoyer dans cette constante
+    //creé un deuxieme tableau avec un id pour chaque article  
+    const articleWithId = {
       ...article,
+      id: uuidv4(), // genere automatiquement un id unique avec uuid
     };
 
-    console.log(articleToSubmit);//on verifie
-
-    // on envoie au serveur
     try {
-      const response = await axios.post('http://localhost:8000/api/article/add', articleToSubmit); //en mettant les données à envoyer
-      console.log('Article créé avec succès :', response.data);
-    } catch (error) {//si erreur
-      console.error('Erreur lors de la création de l\'article:', error);
+      const response = await axios.post('http://localhost:8000/api/article/add', articleWithId);
+      console.log('Article créé avec succès:', response.data);
+
+      // vide le formulaire après l'envoi de l'article
+      setArticle({
+        id: '',
+        name: '',
+        category: '',
+        brand: '',
+        price: '',
+        content: '',
+        stock: '',
+        online: false,
+        picture: {
+          img: '',
+          img1: '',
+          img2: '',
+          img3: '',
+          img4: ''
+        }
+      });
+    } catch (error) {
+      console.error("Erreur lors de la création de l'article:", error);
     }
   };
 
   return (
     <div>
+      <h2>Créer un nouvel article</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name: </label>
         <input
@@ -73,7 +92,7 @@ const CreerArticle = () => {
           value={article.name}
           onChange={handleChange}
         />
-        <br />
+        <br/>
 
         <label htmlFor="category">Category: </label>
         <input
@@ -84,7 +103,7 @@ const CreerArticle = () => {
           value={article.category}
           onChange={handleChange}
         />
-        <br />
+        <br/>
 
         <label htmlFor="brand">Brand: </label>
         <input
@@ -95,7 +114,7 @@ const CreerArticle = () => {
           value={article.brand}
           onChange={handleChange}
         />
-        <br />
+        <br/>
 
         <label htmlFor="price">Price: </label>
         <input
@@ -106,7 +125,7 @@ const CreerArticle = () => {
           value={article.price}
           onChange={handleChange}
         />
-        <br />
+        <br/>
 
         <label htmlFor="content">Content: </label>
         <input
@@ -117,7 +136,7 @@ const CreerArticle = () => {
           value={article.content}
           onChange={handleChange}
         />
-        <br />
+        <br/>
 
         <label htmlFor="stock">Stock: </label>
         <input
@@ -128,7 +147,7 @@ const CreerArticle = () => {
           value={article.stock}
           onChange={handleChange}
         />
-        <br />
+        <br/>
 
         <label htmlFor="online">Online: </label>
         <input
@@ -138,8 +157,8 @@ const CreerArticle = () => {
           checked={article.online}
           onChange={handleChange}
         />
-        <br />
-
+        <br/>
+        
         <label htmlFor="img">Image 0: </label>
         <input
           type="text"
