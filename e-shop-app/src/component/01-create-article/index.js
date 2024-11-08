@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid';  
 
 const CreerArticle = () => {
   const [article, setArticle] = useState({
-    id: '', 
     name: '',
     category: '',
     brand: '',
@@ -37,28 +35,23 @@ const CreerArticle = () => {
         }
       }));
     } else {
-      setArticle((prevArticle) => ({ //pour les autres
+      setArticle((prevArticle) => ({
         ...prevArticle,
         [name]: value
       }));
     }
   };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-    //creé un deuxieme tableau avec un id pour chaque article  
-    const articleWithId = {
-      ...article,
-      id: uuidv4(), // genere automatiquement un id unique avec uuid
-    };
-
+  
     try {
-      const response = await axios.post('http://localhost:8000/api/article/add', articleWithId);
+      // Envoie l'article à l'API
+      const response = await axios.post('http://localhost:8000/api/article/add', article);
       console.log('Article créé avec succès:', response.data);
-
-      // vide le formulaire après l'envoi de l'article
+  
+      // Vide le formulaire après l'envoi de l'article
       setArticle({
-        id: '',
         name: '',
         category: '',
         brand: '',
@@ -78,6 +71,7 @@ const CreerArticle = () => {
       console.error("Erreur lors de la création de l'article:", error);
     }
   };
+  
 
   return (
     <div>

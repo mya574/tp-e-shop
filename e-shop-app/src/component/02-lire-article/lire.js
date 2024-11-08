@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+ 
 const AfficherArticles = () => {
   const [articles, setArticles] = useState([]);
-
+ 
   // recupere les article depuis l'api
   useEffect(() => {
     const fetchArticles = async () => {
@@ -14,22 +14,22 @@ const AfficherArticles = () => {
         console.error('Erreur lors de la récupération des articles:', error);
       }
     };
-
+ 
     fetchArticles();
   }, []);
-
-  // on supprime un article a l'aide de son id 
+ 
+  // on supprime un article a l'aide de son id
   const deleteArticle = async (idArticle) => {
     try {
       await axios.delete(`http://localhost:8000/api/article/delete/${idArticle}`);// on supprime l'article de l'api
-      setArticles((prevArticles) => prevArticles.filter((article) => article.id !== idArticle));//mise a jour de l'article supprime
-
+      setArticles((prevArticles) => prevArticles.filter((article) => article._id !== idArticle));//mise a jour de l'article supprime
+      console.log(articles, idArticle)
       alert("Article bien supprimé");
     } catch (error) {
       console.error("Erreur lors de la suppression de l article :", error);
     }
   };
-
+ 
   return (
     <div>
       <h2>Liste des articles</h2>
@@ -43,7 +43,7 @@ const AfficherArticles = () => {
             <p>Description: {article.content}</p>
             <p>Stock: {article.stock}</p>
             <p>En ligne: {article.online ? 'Oui' : 'Non'}</p>
-            
+           
             <div>
               <h4>Images</h4>
               {article.picture.img && <img src={article.picture.img} alt="Image 0" />}
@@ -59,5 +59,5 @@ const AfficherArticles = () => {
     </div>
   );
 };
-
+ 
 export default AfficherArticles;
