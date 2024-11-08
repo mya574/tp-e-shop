@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';  
+import '../02-lire-article/index.css'
 
 const CreerArticle = () => {
   const [article, setArticle] = useState({
@@ -80,8 +81,8 @@ const CreerArticle = () => {
   };
 
   return (
-    <div>
-      <h2>Créer un nouvel article</h2>
+    <div className='acentrer'>
+      <h2 >Créer un nouvel article</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="name">Name: </label>
         <input
