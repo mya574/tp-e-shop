@@ -1,0 +1,28 @@
+.navbar{
+    background-color: rgb(225, 225, 225);
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    height: 9vh;
+}
+a{
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    border-radius: 20px;
+    padding: 5px 10px 5px 10px;
+    transition: 0.3s;
+    
+
+}
+a:hover {
+    background-color: rgb(123, 123, 123);
+    color: white;
+}
+ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style-type: none;
+}
