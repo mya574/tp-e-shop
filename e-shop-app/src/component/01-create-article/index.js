@@ -84,7 +84,7 @@ const CreerArticle = () => {
     <div className='acentrer'>
       <h2 >Créer un nouvel article</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name: </label>
+        <label htmlFor="name">Nom: </label>
         <input
           type="text"
           id="name"
@@ -95,7 +95,7 @@ const CreerArticle = () => {
         />
         <br/>
 
-        <label htmlFor="category">Category: </label>
+        <label htmlFor="category">Catégorie : </label>
         <input
           type="text"
           id="category"
@@ -106,7 +106,7 @@ const CreerArticle = () => {
         />
         <br/>
 
-        <label htmlFor="brand">Brand: </label>
+        <label htmlFor="brand">Marque: </label>
         <input
           type="text"
           id="brand"
@@ -117,7 +117,7 @@ const CreerArticle = () => {
         />
         <br/>
 
-        <label htmlFor="price">Price: </label>
+        <label htmlFor="price">Prix: </label>
         <input
           type="number"
           id="price"
@@ -128,7 +128,7 @@ const CreerArticle = () => {
         />
         <br/>
 
-        <label htmlFor="content">Content: </label>
+        <label htmlFor="content">Description: </label>
         <input
           type="text"
           id="content"
@@ -150,7 +150,7 @@ const CreerArticle = () => {
         />
         <br/>
 
-        <label htmlFor="online">Online: </label>
+        <label htmlFor="online">En ligne: </label>
         <input
           type="checkbox"
           id="online"
