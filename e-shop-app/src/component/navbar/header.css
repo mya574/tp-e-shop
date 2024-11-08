@@ -16,6 +16,20 @@ a{
     
 
 }
+button {
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    border-radius: 20px;
+    padding: 5px 10px 5px 10px;
+    transition: 0.3s;
+    border: none;
+    font-size: 16px;
+}
+button:hover{
+    background-color: rgb(123, 123, 123);
+    color: white;
+}
 a:hover {
     background-color: rgb(123, 123, 123);
     color: white;

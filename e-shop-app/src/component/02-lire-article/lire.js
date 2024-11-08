@@ -6,8 +6,7 @@ import './index.css'
 const AfficherArticles = () => {
   const [articles, setArticles] = useState([]);
 
-  
-  useEffect(() => {// recupere les articles depuis l'api
+  useEffect(() => { // recupère les articles depuis l'API
     const fetchArticles = async () => {
       try {
         const response = await axios.get('http://localhost:8000/api/article/get');
@@ -19,7 +18,6 @@ const AfficherArticles = () => {
 
     fetchArticles();
   }, []);
-
 
   const deleteArticle = async (idArticle) => {  // supprime un article en utilisant son id
     try {
@@ -43,14 +41,14 @@ const AfficherArticles = () => {
           <p>Description: {article.content}</p>
           <p>Stock: {article.stock}</p>
           <p>En ligne: {article.online ? 'Oui' : 'Non'}</p>
-          
+
           <div>
-            <h4>Images</h4>
-            {article.picture.img && <img src={article.picture.img} alt="Image 0" />}
-            {article.picture.img1 && <img src={article.picture.img1} alt="Image 1" />}
-            {article.picture.img2 && <img src={article.picture.img2} alt="Image 2" />}
-            {article.picture.img3 && <img src={article.picture.img3} alt="Image 3" />}
-            {article.picture.img4 && <img src={article.picture.img4} alt="Image 4" />}
+            <h4>URLs des Images</h4>
+            {article.picture.img && <p>{article.picture.img}</p>}
+            {article.picture.img1 && <p>{article.picture.img1}</p>}
+            {article.picture.img2 && <p>{article.picture.img2}</p>}
+            {article.picture.img3 && <p>{article.picture.img3}</p>}
+            {article.picture.img4 && <p>{article.picture.img4}</p>}
           </div>
 
           <button onClick={() => deleteArticle(article._id)}>Supprimer</button>
