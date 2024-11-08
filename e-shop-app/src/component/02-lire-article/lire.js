@@ -22,7 +22,7 @@ const AfficherArticles = () => {
   const deleteArticle = async (idArticle) => {
     try {
       await axios.delete(`http://localhost:8000/api/article/delete/${idArticle}`);// on supprime l'article de l'api
-      setArticles((prevArticles) => prevArticles.filter((article) => article.id !== idArticle));//mise a jour de l'article supprime
+      setArticles((prevArticles) => prevArticles.filter((article) => article._id !== idArticle));//mise a jour de l'article supprime
 
       alert("Article bien supprimé");
     } catch (error) {

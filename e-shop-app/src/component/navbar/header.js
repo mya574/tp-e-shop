@@ -15,6 +15,9 @@ const Header = () => {
             <li  className='eltnavbar'>
                 <Link to='lirearticle'>Lire</Link>
             </li>
+            <li  className='eltnavbar'>
+                <Link to='modifierarticle'>Modifier</Link>
+            </li>
             
    
         </ul>
